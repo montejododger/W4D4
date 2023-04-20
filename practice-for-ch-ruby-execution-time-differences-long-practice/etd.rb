@@ -1,6 +1,6 @@
+require "byebug"
 ################################################################################
 # Phase I
-require "byebug"
 def my_min1(arr) # O(n^2)
     min = arr[0]
     (0...arr.length).each do |i|
@@ -51,10 +51,9 @@ def largest_contiguous_subsum(arr) #0(n^2)
 
     sub_arr = []
 
-    (0...arr.length).each do |i|
-        (i...arr.length).each do |j|
-            sub_arr << arr[i..j]
-
+    (0...arr.length).each do |i|      # O(n)
+        (i...arr.length).each do |j| # O(n^2)
+            sub_arr << arr[i..j]     # O(n^3)
         end
     end
 
@@ -62,7 +61,7 @@ def largest_contiguous_subsum(arr) #0(n^2)
     #     sub.sum
     # end
 
-    sub_arr.map(&:sum).max
+    sub_arr.map(&:sum).max # n^3 + n
 
     # sums.max
 
@@ -83,7 +82,7 @@ end
 # end
 
 list = [2, 3, -6, 7, -6, 7]
-def largest_contiguous_subsum2(arr) # On
+def largest_contiguous_subsum2(arr) # O(n)
     largest = arr[0]
     current = arr[0]
     debugger
